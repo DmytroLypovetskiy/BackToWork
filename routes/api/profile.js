@@ -55,7 +55,7 @@ router.post(
     const {
       company,
       website,
-      location,
+      locations,
       info
     } = req.body;
 
@@ -64,8 +64,8 @@ router.post(
     profileFields.company = req.company.id;
     if (company) profileFields.company = company;
     if (website) profileFields.website = website;
-    if (location) {
-      profileFields.location = location.split(',').map((skill) => skill.trim());
+    if (locations) {
+      profileFields.locations = locations.split(',').map((location) => location.trim());
     }
     if (info) profileFields.info = info;
 
