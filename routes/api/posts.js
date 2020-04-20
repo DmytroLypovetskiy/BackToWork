@@ -26,7 +26,11 @@ router.post(
       .isEmpty(),
       check('link', 'Link is required')
       .not()
-      .isEmpty()
+      .isEmpty(),
+      check('location', 'Location is required')
+      .isLength({
+        min: 1
+      })
     ]
   ],
   async (req, res) => {
@@ -44,6 +48,8 @@ router.post(
         title: req.body.title,
         text: req.body.text,
         link: req.body.link,
+        location: req.body.location,
+        isActive: req.body.isActive,
         name: company.name,
         avatar: company.avatar,
         company: req.company.id
@@ -131,6 +137,40 @@ router.delete('/:id', auth, async (req, res) => {
         msg: 'Post not found'
       });
     }
+    res.status(500).send('Server Error');
+  }
+});
+
+// @route   PUT api/posts/archive/:id
+// @desc    Archive a post
+// @access  Private
+router.put('/archive/:id', auth, async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.id);
+
+    // Check if the post has already been liked
+
+    if (!post.isActive) {
+      return res.status(400).json({
+        msg: 'Post already archived'
+      });
+    }
+
+    if (post.likes.filter((like) => like.user.toString() === req.user.id).length > 0) {
+      return res.status(400).json({
+        msg: 'Post already archived'
+      });
+    }
+
+    post.likes.unshift({
+      user: req.user.id
+    });
+
+    await post.save();
+
+    res.json(post.likes);
+  } catch (err) {
+    console.error(err);
     res.status(500).send('Server Error');
   }
 });
