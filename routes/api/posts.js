@@ -156,19 +156,11 @@ router.put('/archive/:id', auth, async (req, res) => {
       });
     }
 
-    if (post.likes.filter((like) => like.user.toString() === req.user.id).length > 0) {
-      return res.status(400).json({
-        msg: 'Post already archived'
-      });
-    }
-
-    post.likes.unshift({
-      user: req.user.id
-    });
+    post.isActive = false;
 
     await post.save();
 
-    res.json(post.likes);
+    res.json(post);
   } catch (err) {
     console.error(err);
     res.status(500).send('Server Error');
