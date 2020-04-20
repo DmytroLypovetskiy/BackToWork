@@ -27,7 +27,7 @@ router.post(
       check('link', 'Link is required')
       .not()
       .isEmpty(),
-      check('location', 'Location is required')
+      check('locations', 'Location is required')
       .isLength({
         min: 1
       })
@@ -44,12 +44,26 @@ router.post(
     try {
       const company = await Company.findById(req.company.id).select('-password');
 
+      const {
+        title,
+        text,
+        link,
+        locations,
+        isActive
+      } = req.body;
+
+      // Build post object
+      const postFields = {};
+      if (title) postFields.title = title;
+      if (text) postFields.text = text;
+      if (link) postFields.link = link;
+      if (locations) {
+        postFields.locations = locations.split(',').map((location) => location.trim());
+      }
+      if (isActive) postFields.isActive = isActive;
+
       const newPost = new Post({
-        title: req.body.title,
-        text: req.body.text,
-        link: req.body.link,
-        location: req.body.location,
-        isActive: req.body.isActive,
+        ...postFields,
         name: company.name,
         avatar: company.avatar,
         company: req.company.id
