@@ -1,13 +1,13 @@
 import React from 'react';
-import { HashRouter, Route, Link, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter, Route, Link, Switch, Redirect } from 'react-router-dom';
 import 'bootstrap/scss/bootstrap.scss';
 import './App.scss';
 
-import { Header, Navbar, Landing } from './components/layout';
+import { Header, Landing } from './components/layout';
 import { Login, Register } from './components/auth';
 
 const App = () => (
-  <HashRouter>
+  <BrowserRouter>
     <Header />
     <div className="container">
       container
@@ -17,9 +17,14 @@ const App = () => (
     </div>
     
     <h1>App</h1>
-    <Navbar />
     <Route exact path='/' component={Landing} />
-  </HashRouter>
+    <section className="container-fluid">
+      <Switch>
+        <Route exact path='/register' component={Register} />
+        <Route exact path='/login' component={Login} />
+      </Switch>
+    </section>
+  </BrowserRouter>
 );
 
 export default App;
