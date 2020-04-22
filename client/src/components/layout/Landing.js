@@ -1,12 +1,12 @@
 import React from 'react'
 
-const Landing = () => {
-  return (
-    <div>
-      Landing
-    </div>
-  )
+export default class Landing extends React.Component {
+  render() {
+    return (
+      <div>
+        Landing
+      </div>
+    )
+  }
 }
-
-export default Landing
  
