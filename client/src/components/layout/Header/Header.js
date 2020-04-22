@@ -3,9 +3,9 @@ import './header.scss';
 
 const Header = () => {
   return (
-    <header className="container justify-content-between">
+    <header className="container justify-content-between shadow p-3 mb-5 bg-white rounded">
       <div id="logo">
-        Logo
+        <a href="/">BackToWork</a>
       </div>
       <nav>
         <ul className="nav justify-content-center">
@@ -18,7 +18,7 @@ const Header = () => {
         </ul>
       </nav>
       <div id="auth">
-        <a className="btn btn-primary rounded-pill" href="#" role="button"><i className="fas fa-user-tie"></i> For Employer / Post Job</a>
+        <a className="btn btn-primary rounded-pill" href="#" role="button"><i className="far fa-user-circle"></i> For Employer / Post Job</a>
       </div>
     </header>
   )

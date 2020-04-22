@@ -2,9 +2,9 @@ import React from 'react';
 import { HashRouter, Route, Link, Switch, Redirect } from 'react-router-dom';
 import 'bootstrap/scss/bootstrap.scss';
 import './App.scss';
-import Header from './components/layout/Header/Header';
-import Navbar from './components/layout/Navbar';
-import Landing from './components/layout/Landing';
+
+import { Header, Navbar, Landing } from './components/layout';
+import { Login, Register } from './components/auth';
 
 const App = () => (
   <HashRouter>
