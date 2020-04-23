@@ -6,7 +6,7 @@ import { Navbar } from './../index';
 export default class Header extends React.Component {
   render() {
     return (
-      <header className="container justify-content-between shadow p-3 mb-5 bg-white rounded">
+      <header className="container justify-content-between shadow p-5 mb-5 bg-white rounded-bottom">
         <div id="logo">
           <a href="/">BackToWork</a>
         </div>

@@ -3,3 +3,27 @@
 body {
   background-color: #f3f3f9;
 }
+
+h1,
+label,
+.btn,
+.form-control {
+  font-family: 'Nunito', sans-serif;
+}
+
+h1 {
+  font-weight: 800;
+}
+
+label {
+  color: #666;
+  padding-left: 0.75rem;
+}
+
+.btn {
+  font-size: .875rem;
+}
+
+.shadow {
+  box-shadow: 0 0.75rem 1.5rem rgba(20, 40, 60, .03) !important;
+}

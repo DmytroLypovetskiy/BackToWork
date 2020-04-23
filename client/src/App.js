@@ -9,14 +9,6 @@ import { Login, Register } from './components/auth';
 const App = () => (
   <BrowserRouter>
     <Header />
-    <div className="container">
-      container
-    </div>
-    <div className="container-fluid">
-      container-fluid
-    </div>
-    
-    <h1>App</h1>
     <Route exact path='/' component={Landing} />
     <section className="container-fluid">
       <Switch>
