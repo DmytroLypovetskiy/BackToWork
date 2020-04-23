@@ -1,8 +1,12 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import { setAlert } from '../../actions/alert';
+import { register } from '../../actions/auth';
+import PropTypes from 'prop-types';
+import { Alert } from './../layout';
 
-export default class Register extends React.Component {
+class Register extends React.Component {
   constructor() {
     super();
 
@@ -20,35 +24,14 @@ export default class Register extends React.Component {
 
   async onSubmit(e) {
     const { name, email, password, password2 } = this.state;
+    const { setAlert, register } = this.props;
 
     e.preventDefault();
 
     if(password !== password2) {
-      console.log('Passwords do not match');
+      setAlert('Passwords do not match', 'danger');
     } else {
-      console.log('Success');
-      /*
-      console.log(this.state);
-      const newCompany = {
-        name,
-        email,
-        password
-      }
-
-      try {
-        const config = {
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        }
-        const body = JSON.stringify(newCompany);
-        const res = await axios.post('/api/companies', body, config);
-        console.log(res.data);
-
-      } catch(err) {
-        console.err(err.response.data);
-      }
-      */
+      register({ name, email, password });
     }
   }
 
@@ -59,6 +42,7 @@ export default class Register extends React.Component {
       <section className="container shadow p-5 mb-5 bg-white rounded">
         <h1>Sign Up</h1>
         <p>Register Your Company</p>
+        <Alert />
         <form onSubmit={ (e)=> this.onSubmit(e) } className="pt-5">
           <div className="row">
             <div className="form-group col-md-6">
@@ -99,3 +83,12 @@ export default class Register extends React.Component {
     )
   }
 }
+
+Register.propTypes = {
+  setAlert: PropTypes.func.isRequired,
+  register: PropTypes.func.isRequired
+}
+
+//const mapState = state => ({ setAlert });
+
+export default connect( null, { setAlert, register } )(Register);
