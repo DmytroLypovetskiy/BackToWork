@@ -1,8 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
+import { Link, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { login } from '../../actions/auth';
+import PropTypes from 'prop-types';
+import { Alert } from './../layout';
 
-export default class Login extends React.Component {
+class Login extends React.Component {
   constructor() {
     super();
 
@@ -18,19 +21,27 @@ export default class Login extends React.Component {
 
   async onSubmit(e) {
     const { email, password } = this.state;
+    const { login } = this.props;
 
     e.preventDefault();
 
-    console.log('Success');
+    login({ email, password });
   }
 
   render() {
-    const { name, email, password, password2 } = this.state;
+    const { email, password, } = this.state;
+    const { isAuthenticated } = this.props;
+
+    // Redirect if logged in
+    if(isAuthenticated) {
+      return <Redirect to="/dashboard" />
+    }
 
     return (
       <section className="container shadow p-5 mb-5 bg-white rounded">
         <h1>Sign In</h1>
         <p>Sign Into Your Company</p>
+        <Alert />
         <form onSubmit={ (e)=> this.onSubmit(e) } className="pt-5">
           <div className="row">
             <div className="form-group col-md-6">
@@ -55,3 +66,14 @@ export default class Login extends React.Component {
     )
   }
 }
+
+Login.propTypes = {
+  login: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool
+};
+
+const mapStateToProps = (state) => ({
+	isAuthenticated: state.auth.isAuthenticated
+});
+
+export default connect( mapStateToProps, { login } )(Login);

@@ -1,6 +1,6 @@
 import React from 'react';
+import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { setAlert } from '../../actions/alert';
 import { register } from '../../actions/auth';
 import PropTypes from 'prop-types';
@@ -37,6 +37,12 @@ class Register extends React.Component {
 
   render() {
     const { name, email, password, password2 } = this.state;
+    const { isAuthenticated } = this.props;
+
+    // Redirect if logged in
+    if(isAuthenticated) {
+      return <Redirect to="/dashboard" />
+    }
 
     return (
       <section className="container shadow p-5 mb-5 bg-white rounded">
@@ -86,9 +92,12 @@ class Register extends React.Component {
 
 Register.propTypes = {
   setAlert: PropTypes.func.isRequired,
-  register: PropTypes.func.isRequired
-}
+  register: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool
+};
 
-//const mapState = state => ({ setAlert });
+const mapStateToProps = (state) => ({
+	isAuthenticated: state.auth.isAuthenticated
+});
 
-export default connect( null, { setAlert, register } )(Register);
+export default connect( mapStateToProps, { setAlert, register } )(Register);
