@@ -8,11 +8,11 @@ import store from './store';
 import { loadCompany } from './actions/auth';
 import setAuthToken from './utils/setAuthToken';
 
-import { Header, Landing, Alert } from './components/layout';
-import { Login, Register } from './components/auth';
-
 import 'bootstrap/scss/bootstrap.scss';
 import './App.scss';
+
+import { Header, Landing } from './components/layout';
+import { Login, Register } from './components/auth';
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
