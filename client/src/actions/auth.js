@@ -2,11 +2,35 @@ import axios from 'axios';
 import { setAlert } from './alert';
 import {
   REGISTER_SUCCESS,
-  REGISTER_FAIL
+  REGISTER_FAIL,
+  COMPANY_LOADED,
+  AUTH_ERROR
 } from './types';
 
+import setAuthToken from '../utils/setAuthToken';
+
+// Load Company
+export const loadCompany = () => async (dispatch) => {
+  if (localStorage.token) {
+    setAuthToken(localStorage.token);
+  }
+
+  try {
+    const res = await axios.get('/api/auth');
+
+    dispatch({
+      type: COMPANY_LOADED,
+      payload: res.data
+    });
+  } catch (err) {
+    dispatch({
+      type: AUTH_ERROR
+    });
+  }
+};
+
 //Register Company
-export const register = ({name, email, password}) => async dispatch => {
+export const register = ({name, email, password}) => async (dispatch) => {
   const config = {
     headers: {
       'Content-Type': 'application/json'
