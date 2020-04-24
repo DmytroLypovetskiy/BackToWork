@@ -1,6 +1,7 @@
-import Header from './Header/Header';
+import Header from './Header';
 import Navbar from './Navbar';
 import Landing from './Landing';
 import Alert from './Alert';
+import Auth from './Auth';
 
-export { Header, Navbar, Landing, Alert };
+export { Header, Navbar, Landing, Alert, Auth };
