@@ -13,6 +13,8 @@ import './App.scss';
 
 import { Header, Landing } from './components/layout';
 import { Login, Register } from './components/auth';
+import { Dashboard } from './components/dashboard';
+import { PrivateRoute } from './components/routing';
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -28,10 +30,11 @@ const App = () => {
       <BrowserRouter>
         <Header />
         <Route exact path='/' component={Landing} />
-        <section className="container-fluid">
+        <section className="container shadow p-5 mb-5 bg-white rounded">
           <Switch>
             <Route exact path='/register' component={Register} />
             <Route exact path='/login' component={Login} />
+            <PrivateRoute exact path='/dashboard' component={Dashboard} />
           </Switch>
         </section>
       </BrowserRouter>

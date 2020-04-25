@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { login } from '../../actions/auth';
@@ -38,7 +38,7 @@ class Login extends React.Component {
     }
 
     return (
-      <section className="container shadow p-5 mb-5 bg-white rounded">
+      <Fragment>
         <h1>Sign In</h1>
         <p>Sign Into Your Company</p>
         <Alert />
@@ -62,7 +62,7 @@ class Login extends React.Component {
           <button type="submit" className="btn btn-primary rounded-pill">Login</button>
           <label>Don't have an account? <Link to="/register">Register</Link></label>
         </form>
-      </section>
+      </Fragment>
     )
   }
 }

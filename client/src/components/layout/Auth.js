@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 
 class Auth extends React.Component {
   render() {
-    console.log(this.props);
     const { auth: { isAuthenticated, loading }, logout } = this.props;
 
     const authLink = (
