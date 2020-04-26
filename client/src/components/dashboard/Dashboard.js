@@ -10,12 +10,21 @@ class Dashboard extends React.Component {
     const { getCurrentProfile } = this.props;
 
     getCurrentProfile();
-  } 
-  render() {
-    console.log(this.props);
-    const { auth: { company }, profile : { profile, loading } } = this.props;
+  }
 
-    console.log(profile);
+  componentDidUpdate(prevProps) {
+    const { auth: { company }, getCurrentProfile } = this.props;
+    const prevCompany = prevProps.auth.company;
+
+    /*
+    if (company && prevCompany && (company.name !== prevCompany.name)) {
+      getCurrentProfile();
+    }
+    */
+  }
+
+  render() {
+    const { auth: { company }, profile : { profile, loading } } = this.props;
 
     return loading && profile === null ? 
       <Spinner />
