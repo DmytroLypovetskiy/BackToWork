@@ -19,11 +19,11 @@ export const loadCompany = () => async (dispatch) => {
   }
 
   try {
-    const res = await axios.get('/api/auth');
+    const { data } = await axios.get('/api/auth');
 
     dispatch({
       type: COMPANY_LOADED,
-      payload: res.data
+      payload: data
     });
   } catch (err) {
     dispatch({

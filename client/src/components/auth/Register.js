@@ -18,11 +18,11 @@ class Register extends React.Component {
     }
   }
 
-  setFieldToState(e) {
+  setFieldToState = (e) => {
     this.setState({[e.target.name]: e.target.value})
   }
 
-  async onSubmit(e) {
+  onSubmit = async (e) => {
     const { name, email, password, password2 } = this.state;
     const { setAlert, register } = this.props;
 
@@ -49,20 +49,20 @@ class Register extends React.Component {
         <h1>Sign Up</h1>
         <p>Register Your Company</p>
         <Alert />
-        <form onSubmit={ (e)=> this.onSubmit(e) } className="pt-5">
+        <form onSubmit={ this.onSubmit } className="pt-5">
           <div className="row">
             <div className="form-group col-md-6">
               <label htmlFor="formGroupExampleInput">Company name</label>
               <input type="text" className="form-control rounded-pill" name="name" 
                 value={name}
-                onChange={(e) => this.setFieldToState(e)} 
+                onChange={ this.setFieldToState } 
                 placeholder="Company name" required />
             </div>
             <div className="form-group col-md-6">
               <label htmlFor="formGroupExa mpleInput">Company email</label>
               <input type="email" className="form-control rounded-pill" name="email"
                 value={email}
-                onChange={(e) => this.setFieldToState(e)}
+                onChange={this.setFieldToState}
                 placeholder="Email" required />
             </div>
           </div>
@@ -71,14 +71,14 @@ class Register extends React.Component {
               <label htmlFor="inputPassword">Password</label>
               <input type="password" className="form-control rounded-pill" name="password"
                 value={password}
-                onChange={(e) => this.setFieldToState(e)}
+                onChange={this.setFieldToState}
                 id="inputPassword" required />
             </div>
             <div className="form-group col-md-6">
               <label htmlFor="inputPassword2">Confirm Password</label>
               <input type="password" className="form-control rounded-pill" name="password2"
                 value={password2}
-                onChange={(e) => this.setFieldToState(e)}
+                onChange={this.setFieldToState}
                 id="inputPassword2" required />
             </div>
           </div>
