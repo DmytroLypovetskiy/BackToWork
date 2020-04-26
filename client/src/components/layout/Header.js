@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Navbar, Auth } from './index';
+import { Navbar, Auth } from './';
 import './header.scss';
 
 export default class Header extends React.Component {

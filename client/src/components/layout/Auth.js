@@ -11,10 +11,14 @@ class Auth extends React.Component {
     const authLink = (
       <Fragment>
         <li className="nav-item">
-          <Link onClick={logout} className="nav-link" to="#"><i className="fas fa-sign-out-alt"></i> Logout</Link>
+          <Link onClick={logout} className="nav-link" to="#">
+            <i className="fas fa-sign-out-alt"></i> <span className="d-none d-lg-inline">Logout</span>
+          </Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link" to="#">My listings</Link>
+          <Link className="nav-link" to="/dashboard">
+            <i className="fas fa-clipboard-list"></i> <span className="d-none d-lg-inline">Dashboard</span>
+            </Link>
         </li>
       </Fragment>
     );

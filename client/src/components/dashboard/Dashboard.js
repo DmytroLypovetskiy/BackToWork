@@ -1,22 +1,41 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getCurrentProfile } from '../../actions/profile';
+import { Spinner } from '../layout';
+import { Link } from 'react-router-dom';
 
 class Dashboard extends React.Component {
   componentDidMount() {
-    const { getCurrentProfile, auth, profile } = this.props;
+    const { getCurrentProfile } = this.props;
 
     getCurrentProfile();
-  }
+  } 
   render() {
-    return (
-      <div>
-        Dashboard
-      </div>
-    )
+    console.log(this.props);
+    const { auth: { company }, profile : { profile, loading } } = this.props;
+
+    console.log(profile);
+
+    return loading && profile === null ? 
+      <Spinner />
+      :
+      <Fragment>
+        <h1 className="text-primary">Dashboard</h1>
+        <p>
+          <i className="fas fa-building"></i> Welcome { company && company.name }
+        </p>
+        {profile !== null ? 
+          <Fragment>has </Fragment>
+          :
+          <Fragment>
+            <p><strong>{ company && company.name }</strong> has not yet setup a profile. Please add company information.</p>
+            <Link to="/create-profile" className="btn btn-primary rounded-pill">Create Profile</Link>
+          </Fragment>
+        }
+      </Fragment>;
   }
-}
+} 
 
 Dashboard.propTypes = {
   getCurrentProfile: PropTypes.func.isRequired,
