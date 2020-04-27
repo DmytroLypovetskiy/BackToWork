@@ -39,8 +39,18 @@ class EditProfile extends React.Component {
     });
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prev) {
+    const { profile: { profile, loading }, getCurrentProfile } = this.props;
 
+    if (prev.profile.loading !== loading && profile) {
+      getCurrentProfile();
+
+      this.setState({
+        website: loading || !profile.website ? '' : profile.website,
+        locations: loading || !profile.locations ? '' : profile.locations.join(','),
+        info: loading || !profile.info ? '' : profile.info
+      });
+    }
   }
 
   render() {
