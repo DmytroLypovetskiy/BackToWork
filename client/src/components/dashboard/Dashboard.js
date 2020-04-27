@@ -7,27 +7,28 @@ import { Link } from 'react-router-dom';
 import { DashboardActions } from './'
 
 class Dashboard extends React.Component {
+  /*
   componentDidMount() {
     const { getCurrentProfile } = this.props;
 
+    console.log(this.props);
+
     getCurrentProfile();
   }
+  */
 
-  componentDidUpdate(prevProps) {
-    const { auth: { company }, getCurrentProfile } = this.props;
-    const prevCompany = prevProps.auth.company;
+  componentDidUpdate(prev) {
+    const { getCurrentProfile } = this.props;
 
-    /*
-    if (company && prevCompany && (company.name !== prevCompany.name)) {
+    if (prev.auth.company === null) {
       getCurrentProfile();
     }
-    */
   }
 
   render() {
     const { auth: { company }, profile : { profile, loading } } = this.props;
 
-    return loading && profile === null ? 
+    return company && loading && profile === null ? 
       <Spinner />
       :
       <Fragment>
