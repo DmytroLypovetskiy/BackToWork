@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { getCurrentProfile } from '../../actions/profile';
 import { Spinner } from '../layout';
 import { Link } from 'react-router-dom';
+import { DashboardActions } from './'
 
 class Dashboard extends React.Component {
   componentDidMount() {
@@ -35,7 +36,9 @@ class Dashboard extends React.Component {
           <i className="fas fa-building"></i> Welcome { company && company.name }
         </p>
         {profile !== null ? 
-          <Fragment>has </Fragment>
+          <Fragment>
+            <DashboardActions />
+          </Fragment>
           :
           <Fragment>
             <p><strong>{ company && company.name }</strong> has not yet setup a profile. Please add company information.</p>
