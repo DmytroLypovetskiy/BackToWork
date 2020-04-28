@@ -34,7 +34,7 @@ class EditProfile extends React.Component {
 
     this.setState({
       website: loading || !profile.website ? '' : profile.website,
-      locations: loading || !profile.locations ? '' : profile.locations.join(','),
+      locations: loading || !profile.locations ? '' : profile.locations.join(', '),
       info: loading || !profile.info ? '' : profile.info
     });
   }
@@ -47,7 +47,7 @@ class EditProfile extends React.Component {
 
       this.setState({
         website: loading || !profile.website ? '' : profile.website,
-        locations: loading || !profile.locations ? '' : profile.locations.join(','),
+        locations: loading || !profile.locations ? '' : profile.locations.join(', '),
         info: loading || !profile.info ? '' : profile.info
       });
     }
