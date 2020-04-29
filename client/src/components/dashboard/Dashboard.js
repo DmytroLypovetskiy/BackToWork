@@ -27,7 +27,6 @@ class Dashboard extends React.Component {
 
   render() {
     const { auth: { company }, profile : { profile, loading }, deleteAccount } = this.props;
-    console.log(this.props);
 
     return company && loading && profile === null ? 
       <Spinner />

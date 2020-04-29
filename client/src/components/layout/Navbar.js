@@ -6,8 +6,11 @@ export default class Navbar extends React.Component {
     return (
       <nav>
         <ul className="nav justify-content-center">
+        <li className="nav-item">
+            <Link className="nav-link" to="/profiles">Companies</Link>
+          </li>
           <li className="nav-item">
-            <Link className="nav-link active" to="/search">Job Search</Link>
+            <Link className="nav-link" to="/search">Job Search</Link>
           </li>
           <li className="nav-item">
             <Link className="nav-link" to="/">About us</Link>
