@@ -58,7 +58,7 @@ export const createProfile = (formData, history, edit = false) => async (dispatc
       history.push('/dashboard');
     }
   } catch (err) {
-    const errors = err.response.data.errors;
+    const { errors } = err.response.data;
 
     if (errors) {
       errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
@@ -81,18 +81,20 @@ export const deleteAccount = () => async (dispatch) => {
   if (window.confirm('Are you sure? This can NOT be undone!')) {
     try {
       await axios.delete('/api/profile');
-      console.log(111);
+
       dispatch({ type: CLEAR_PROFILE });
       dispatch({ type: ACCOUNT_DELETED });
 
-      dispatch(setAlert('Your account has been permanently deleted'));
-      console.log(333);
+      dispatch(setAlert('Company has been deleted', 'primary'));
     } catch (err) {
-      console.log('err');
-      console.log(err);
+      const { statusText, status } = err.response;
+
       dispatch({
         type: PROFILE_ERROR,
-        payload: { msg: err.response.statusText, status: err.response.status }
+        payload: {
+          msg: statusText,
+          status: status
+        }
       });
     }
   }
