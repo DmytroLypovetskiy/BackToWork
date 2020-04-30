@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 import { Spinner } from '../layout';
 import { getProfileById } from '../../actions/profile';
 import { Link } from 'react-router-dom';
-import { DashboardActions } from '../dashboard'
+import { DashboardActions } from '../dashboard';
+import { ProfileTop } from './';
 
 class Profile extends React.Component {
   componentDidMount() {
@@ -31,10 +32,17 @@ class Profile extends React.Component {
         {profile === null || loading ?
           <Spinner />
           :
-          <div className="pt-5 d-flex justify-content-between">
-            <Link to='/profiles' className='btn btn-outline-primary rounded-pill'><i className='fas fa-caret-left'></i> Back To Companies</Link>
-            {auth.isAuthenticated && auth.loading === false && auth.company._id === profile.company._id && <DashboardActions />}
-          </div>
+          <Fragment>
+            <h1 className="text-primary">Dashboard</h1>
+            <div className="pt-5">
+              <ProfileTop profile={profile} />
+              
+              <div className="pt-5 d-flex justify-content-between">
+                <Link to='/profiles' className='btn btn-outline-primary rounded-pill'><i className='fas fa-caret-left'></i> Back To Companies</Link>
+                {auth.isAuthenticated && auth.loading === false && auth.company._id === profile.company._id && <DashboardActions />}
+              </div>
+            </div>
+          </Fragment>
         }
       </Fragment>
     )

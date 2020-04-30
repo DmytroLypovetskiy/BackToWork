@@ -18,7 +18,7 @@ router.get('/me', auth, async (req, res) => {
   try {
     const profile = await Profile.findOne({
       company: req.company.id
-    }).populate('company', ['name', 'logo']);
+    });
 
     if (!profile) {
       return res.status(400).json({
@@ -26,7 +26,7 @@ router.get('/me', auth, async (req, res) => {
       });
     }
 
-    res.json(profile);
+    res.json(profile.populate('company', ['name', 'logo']));
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server Error');
@@ -42,7 +42,7 @@ router.post(
   [
     check('info', 'Company info is required')
     .not()
-    .isEmpty(),
+    .isEmpty()
   ],
   async (req, res) => {
     const errors = validationResult(req);
@@ -53,7 +53,6 @@ router.post(
     }
 
     const {
-      company,
       website,
       locations,
       info
@@ -62,7 +61,6 @@ router.post(
     // Build profile object
     const profileFields = {};
     profileFields.company = req.company.id;
-    if (company) profileFields.company = company;
     if (website) profileFields.website = website;
     if (locations) {
       profileFields.locations = locations.split(',').map((location) => location.trim());
