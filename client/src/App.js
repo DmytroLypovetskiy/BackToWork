@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import { BrowserRouter, Route, Link, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 // Redux
 import { Provider } from 'react-redux';
@@ -17,6 +17,7 @@ import { Dashboard } from './components/dashboard';
 import { PrivateRoute } from './components/routing';
 import { CreateProfile, EditProfile } from './components/profile-forms';
 import { Profiles } from './components/profiles';
+import { Profile } from './components/profile';
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -37,6 +38,7 @@ const App = () => {
             <Route exact path='/register' component={Register} />
             <Route exact path='/login' component={Login} />
             <Route exact path='/profiles' component={Profiles} />
+            <Route exact path='/profile/:id' component={Profile} />
             <PrivateRoute exact path='/dashboard' component={Dashboard} />
             <PrivateRoute exact path='/create-profile' component={CreateProfile} />
             <PrivateRoute exact path='/edit-profile' component={EditProfile} />

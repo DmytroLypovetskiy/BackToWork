@@ -7,24 +7,23 @@ import { ProfileItem } from './';
 
 class Profiles extends React.Component {
   componentDidMount() {
-    //console.log('componentDidMount');
     const { getProfiles } = this.props;
-    //console.log(this.props);
+
     getProfiles();
   }
 
+  /*
   componentDidUpdate(prev) {
-    //console.log('componentDidUpdate');
-    const {
-      getProfiles,
-      profile: { loading }
-    } = this.props;
-    //console.log(prev.profile);
-    //console.log(this.props.profile);
-    if (prev.profile.profiles.length !== this.props.profile.profiles.length) {
+    console.log(prev);
+
+    if (prev.profile.profile === null) {
+      const { getProfiles } = this.props;
+
       getProfiles();
     }
   }
+  */
+
   render() {
     const {
       profile: { profiles, loading }
@@ -36,9 +35,7 @@ class Profiles extends React.Component {
       <Fragment>
         <h1 className='text-primary'>Companies</h1>
         <div className='pt-5'>
-          <h2>
-            <i className='fas fa-building'></i> List of an avesome companies
-          </h2>
+          <h2><i className='fas fa-building'></i> List of an avesome companies</h2>
 
           {profiles.length > 0 ? (
             <ul className='list-group list-group-flush'>

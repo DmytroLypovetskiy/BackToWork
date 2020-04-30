@@ -4,7 +4,6 @@ import {
   GET_PROFILE,
   GET_PROFILES,
   PROFILE_ERROR,
-  UPDATE_PROFILE,
   CLEAR_PROFILE,
   ACCOUNT_DELETED
 } from './types';
@@ -36,7 +35,7 @@ export const getProfiles = () => async (dispatch) => {
   dispatch({ type: CLEAR_PROFILE });
 
   try {
-    const { data } = await axios.get('/api/profile/');
+    const { data } = await axios.get('/api/profile');
 
     dispatch({
       type: GET_PROFILES,

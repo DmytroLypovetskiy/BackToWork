@@ -6,19 +6,15 @@ export default class ProfileItem extends React.Component {
     const {
       profile: {
         company: { _id, name, logo },
-        locations,
-        info,
-        website
+        locations
       }
     } = this.props;
-
-    console.log(this.props);
 
     return (
       <li className='list-group-item'>
         <img src={logo} alt='' className='rounded-circle' />
         <div>
-          <h2>{name}</h2>
+          <h3>{name}</h3>
           <p className='text-secondary'></p>
           {locations.length > 0 && (
             <p className='text-secondary'>{locations.join(', ')}</p>

@@ -45,7 +45,7 @@ class Dashboard extends React.Component {
               {profile.info ? <p>{profile.info}</p> : ''}
 
               <div className="pt-5 d-flex justify-content-between">
-              <DashboardActions />
+                <DashboardActions />
                 <button className="btn btn-danger rounded-pill" onClick={ deleteAccount }>
                   <i className="far fa-trash-alt"></i> Delete My Account
                 </button>
