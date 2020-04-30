@@ -15,7 +15,6 @@ export default class ProfileItem extends React.Component {
         <img src={logo} alt='' className='rounded-circle' />
         <div>
           <h3>{name}</h3>
-          <p className='text-secondary'></p>
           {locations.length > 0 && (
             <p className='text-secondary'>{locations.join(', ')}</p>
           )}
