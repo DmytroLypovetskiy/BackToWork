@@ -65,7 +65,7 @@ router.post(
       const newPost = new Post({
         ...postFields,
         name: company.name,
-        avatar: company.avatar,
+        logo: company.logo,
         company: req.company.id
       });
 

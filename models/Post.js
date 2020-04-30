@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const PostSchema = new mongoose.Schema({
   company: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'companies'
+    ref: 'company'
   },
   title: {
     type: String,
@@ -24,7 +24,7 @@ const PostSchema = new mongoose.Schema({
   name: {
     type: String
   },
-  avatar: {
+  logo: {
     type: String
   },
   isActive: {

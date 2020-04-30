@@ -2,21 +2,39 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Spinner } from '../layout';
+import { PostItem } from './';
 import { getPosts } from '../../actions/post';
 
 class Posts extends React.Component {
   componentDidMount() {
-    const { getPosts, post: { posts, loading } } = this.props;
+    const { getPosts } = this.props;
 
     getPosts();
   }
 
   render() {
-    return (
-      <div>
-        
-      </div>
-    )
+    const { post: { posts, loading } } = this.props;
+
+    return loading ?
+      <Spinner />
+    :
+      <Fragment>
+        <h1 className='text-primary'>Jobs</h1>
+        <div className='pt-5'>
+          <h2><i className='far fa-list-alt'></i> Available jobs</h2>
+
+          {posts.length > 0 ? (
+            <ul className='list-group list-group-flush'>
+              {posts.map((post) => {
+                return <PostItem key={post._id} post={post} />;
+              })}
+            </ul>
+          ) : (
+            <p>No jobs available</p>
+          )}
+        </div>
+      </Fragment>
+  
   }
 }
 

@@ -29,13 +29,13 @@ class Profiles extends React.Component {
       profile: { profiles, loading }
     } = this.props;
 
-    return loading ? (
+    return loading ?
       <Spinner />
-    ) : (
+      :
       <Fragment>
         <h1 className='text-primary'>Companies</h1>
         <div className='pt-5'>
-          <h2><i className='fas fa-building'></i> List of an avesome companies</h2>
+          <h2><i className='far fa-building'></i> List of an awesome companies</h2>
 
           {profiles.length > 0 ? (
             <ul className='list-group list-group-flush'>
@@ -48,7 +48,6 @@ class Profiles extends React.Component {
           )}
         </div>
       </Fragment>
-    );
   }
 }
 
