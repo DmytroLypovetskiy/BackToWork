@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Spinner } from '../layout';
 import { PostItem } from './';
 import { getPosts } from '../../actions/post';
+import { Alert } from './../layout';
 
 class Posts extends React.Component {
   componentDidMount() {
@@ -17,12 +18,12 @@ class Posts extends React.Component {
 
     return loading ?
       <Spinner />
-    :
+      :
       <Fragment>
         <h1 className='text-primary'>Jobs</h1>
+        <p><i className='far fa-list-alt'></i> Available jobs</p>
+        <Alert />
         <div className='pt-5'>
-          <h2><i className='far fa-list-alt'></i> Available jobs</h2>
-
           {posts.length > 0 ? (
             <ul className='list-group list-group-flush'>
               {posts.map((post) => {

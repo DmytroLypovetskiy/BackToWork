@@ -4,10 +4,12 @@ import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
 import { Auth } from '../layout';
 import { connect } from 'react-redux';
+import { deletePost } from '../../actions/post';
 
 class PostItem extends React.Component {
   render() {
     const {
+      deletePost,
       auth,
       post: {
         _id,
@@ -48,7 +50,7 @@ class PostItem extends React.Component {
           </div>
           <div className="col-md-6">
             <p>{text}</p>
-            <p>
+            <div className="d-flex justify-content-between">
               <Link
                 to={`/post/${_id}`}
                 className='btn btn-primary rounded-pill'
@@ -56,12 +58,12 @@ class PostItem extends React.Component {
                 View Job
               </Link>
              
-              {/* !auth.loading && company === auth.company._id && (
-                <button className='btn button-danger rounded-pill'>
+              {!auth.loading && auth.company && company === auth.company._id && (
+                <button onClick={ (e) => deletePost(_id) } className='btn btn-danger rounded-pill'>
                   <i className='far fa-trash-alt'></i> Delete
                 </button>
-              ) */}
-            </p>
+              )}
+            </div>
           </div>
         </div>
       </li>
@@ -71,11 +73,12 @@ class PostItem extends React.Component {
 
 PostItem.propTypes = {
   post: PropTypes.object.isRequired,
-  auth: PropTypes.object.isRequired
+  auth: PropTypes.object.isRequired,
+  deletePost: PropTypes.func.isRequired 
 }
 
 const mapStateToProps = state => ({
   auth: state.auth
 });
 
-export default connect( mapStateToProps, {} )(PostItem);
+export default connect( mapStateToProps, { deletePost } )(PostItem);
