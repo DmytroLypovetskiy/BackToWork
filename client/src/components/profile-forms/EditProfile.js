@@ -72,14 +72,14 @@ class EditProfile extends React.Component {
               <input type="text" className="form-control rounded-pill" name="website"
                 value={website}
                 onChange={this.setFieldToState}
-                placeholder="website"  />
+                placeholder="website" />
             </div>
             <div className="form-group col-md-6">
               <label htmlFor="inputPassword">Locations <small>(Use comma separated)</small></label>
               <input type="text" className="form-control rounded-pill" name="locations"
                 value={locations}
                 onChange={this.setFieldToState}
-                placeholder="locations"  />
+                placeholder="locations" />
             </div>
           </div>
           <div className="row">
@@ -95,7 +95,6 @@ class EditProfile extends React.Component {
           </div>
           <button type="submit" className="btn btn-primary rounded-pill">Update</button>
           <label>or <Link to="/dashboard">Go Back</Link> to Dashboard</label>
-          
         </form>
       </Fragment>
     )

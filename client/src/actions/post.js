@@ -3,7 +3,8 @@ import { setAlert } from './alert';
 import {
   GET_POSTS,
   POST_ERROR,
-  DELETE_POST
+  DELETE_POST,
+  ADD_POST
 } from './types';
 
 // Get posts
@@ -39,6 +40,36 @@ export const deletePost = (id) => async (dispatch) => {
     });
 
     dispatch(setAlert('Job removed', 'success'));
+  } catch (err) {
+    const { statusText, status } = err.response;
+
+    dispatch({
+      type: POST_ERROR,
+      payload: {
+        msg: statusText,
+        status: status
+      }
+    });
+  }
+};
+
+// Add posts
+export const addPost = (formData) => async (dispatch) => {
+  const config = {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  };
+
+  try {
+    const { data } = await axios.post('/api/posts', formData, config);
+
+    dispatch({
+      type: ADD_POST,
+      payload: data
+    });
+
+    dispatch(setAlert('Job created', 'success'));
   } catch (err) {
     const { statusText, status } = err.response;
 

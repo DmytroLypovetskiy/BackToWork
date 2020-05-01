@@ -78,8 +78,6 @@ export const getProfileById = (companyId) => async (dispatch) => {
 
 // Create or update company profile
 export const createProfile = (formData, history, edit = false) => async (dispatch) => {
-  console.log(formData);
-  
   try {
     const config = {
       headers: {

@@ -20,7 +20,7 @@ class Posts extends React.Component {
       <Spinner />
       :
       <Fragment>
-        <h1 className='text-primary'>Jobs</h1>
+        <h1>Jobs</h1>
         <p><i className='far fa-list-alt'></i> Available jobs</p>
         <Alert />
         <div className='pt-5'>
