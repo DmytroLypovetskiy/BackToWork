@@ -163,7 +163,6 @@ router.put('/archive/:id', auth, async (req, res) => {
     const post = await Post.findById(req.params.id);
 
     // Check if the post has already been archived
-
     if (!post.isActive) {
       return res.status(400).json({
         msg: 'Post already archived'
@@ -188,8 +187,20 @@ router.put('/unarchive/:id', auth, async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
 
-    // Check if the post has already been archived
+    if (!post) {
+      return res.status(404).json({
+        msg: 'Post not found'
+      });
+    }
 
+    // Check company
+    if (post.company.toString() !== req.company.id) {
+      return res.status(401).json({
+        msg: 'Company not authorized'
+      });
+    }
+
+    // Check if the post has already been archived
     if (post.isActive) {
       return res.status(400).json({
         msg: 'Post is already active'

@@ -24,15 +24,15 @@ class Posts extends React.Component {
         <p><i className='far fa-list-alt'></i> Available jobs</p>
         <Alert />
         <div className='pt-5'>
-          {posts.length > 0 ? (
+          {posts && posts.length > 0 ?
             <ul className='list-group list-group-flush'>
               {posts.map((post) => {
                 return <PostItem key={post._id} post={post} />;
               })}
             </ul>
-          ) : (
+            :
             <p>No jobs available</p>
-          )}
+          }
         </div>
       </Fragment>
   

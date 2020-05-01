@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
 import { Auth } from '../layout';
 import { connect } from 'react-redux';
-import { deletePost } from '../../actions/post';
+import { deletePost, archivePost, unarchivePost } from '../../actions/post';
 
 class PostItem extends React.Component {
   render() {
     const {
       deletePost,
+      archivePost,
+      unarchivePost,
       auth,
       post: {
         _id,
@@ -62,9 +64,22 @@ class PostItem extends React.Component {
                 </Link>
               
                 {!auth.loading && auth.company && company === auth.company._id && (
-                  <button onClick={ (e) => deletePost(_id) } className='btn btn-danger rounded-pill'>
-                    <i className='far fa-trash-alt'></i> Delete
-                  </button>
+                  <Fragment>
+                    
+                    {isActive ? 
+                      <button onClick={ (e) => archivePost(_id) } className='btn btn-outline-danger rounded-pill'>
+                        <i className='fas fa-lock'></i> Archive
+                      </button>
+                      :
+                      <button onClick={ (e) => unarchivePost(_id) } className='btn btn-outline-success rounded-pill'>
+                        <i className='fas fa-lock-open'></i> Reopen
+                      </button>
+                    }
+                    
+                    <button onClick={ (e) => deletePost(_id) } className='btn btn-danger rounded-pill'>
+                      <i className='far fa-trash-alt'></i> Delete
+                    </button>
+                  </Fragment>
                 )}
               </div>
             }
@@ -82,11 +97,13 @@ PostItem.defaultProps = {
 PostItem.propTypes = {
   post: PropTypes.object.isRequired,
   auth: PropTypes.object.isRequired,
-  deletePost: PropTypes.func.isRequired 
+  deletePost: PropTypes.func.isRequired,
+  archivePost: PropTypes.func.isRequired,
+  unarchivePost: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({
   auth: state.auth
 });
 
-export default connect( mapStateToProps, { deletePost } )(PostItem);
+export default connect( mapStateToProps, { deletePost, archivePost, unarchivePost } )(PostItem);

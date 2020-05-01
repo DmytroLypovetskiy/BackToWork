@@ -3,7 +3,8 @@ import {
   POST_ERROR,
   DELETE_POST,
   ADD_POST,
-  GET_POST
+  GET_POST,
+  UPDATE_ARCHIVE
 } from '../actions/types';
 
 const initialState = {
@@ -47,6 +48,12 @@ export default (state = initialState, action) => {
         error: payload,
         loading: false
       };
+    case UPDATE_ARCHIVE:
+      return {
+        ...state,
+        posts: state.posts.map(post => (post._id === payload._id) ? payload : post),
+        loading: false
+      }
     default:
       return state;
   }
