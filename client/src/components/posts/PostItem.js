@@ -23,7 +23,10 @@ class PostItem extends React.Component {
         isActive,
         date
       },
+      showActions
     } = this.props;
+
+    console.log(this.props);
 
     return (
       <li className='list-group-item'>
@@ -32,7 +35,7 @@ class PostItem extends React.Component {
             <img src={logo} alt='' className='rounded-circle img-fluid' />
           </div>
           <div className="col-md-4">
-            <h3 className='h5'>{title}</h3>
+            <h2 className='h5'>{title}</h2>
             <h4 className='h6'><Link
                 to={`/profile/${company}`}
                 className='text-reset'
@@ -48,25 +51,32 @@ class PostItem extends React.Component {
           </div>
           <div className="col-md-6">
             <p>{text}</p>
-            <div className="d-flex justify-content-between">
-              <Link
-                to={`/post/${_id}`}
-                className='btn btn-primary rounded-pill'
-              >
-                View Job
-              </Link>
-             
-              {!auth.loading && auth.company && company === auth.company._id && (
-                <button onClick={ (e) => deletePost(_id) } className='btn btn-danger rounded-pill'>
-                  <i className='far fa-trash-alt'></i> Delete
-                </button>
-              )}
-            </div>
+
+            {showActions && 
+              <div className="d-flex justify-content-between">
+                <Link
+                  to={`/posts/${_id}`}
+                  className='btn btn-primary rounded-pill'
+                >
+                  View Job
+                </Link>
+              
+                {!auth.loading && auth.company && company === auth.company._id && (
+                  <button onClick={ (e) => deletePost(_id) } className='btn btn-danger rounded-pill'>
+                    <i className='far fa-trash-alt'></i> Delete
+                  </button>
+                )}
+              </div>
+            }
           </div>
         </div>
       </li>
     );
   }
+}
+
+PostItem.defaultProps = {
+  showActions: true
 }
 
 PostItem.propTypes = {

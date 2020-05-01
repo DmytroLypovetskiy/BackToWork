@@ -27,25 +27,20 @@ class Profile extends React.Component {
       profile: { profile, loading }, auth
     } = this.props;
 
-    return (
-      <Fragment>
-        {profile === null || loading ?
-          <Spinner />
-          :
-          <Fragment>
-            <h1 className="text-primary">Dashboard</h1>
-            <div className="pt-5">
-              <ProfileTop profile={profile} />
-              
-              <div className="pt-5 d-flex justify-content-between">
-                <Link to='/profiles' className='btn btn-outline-primary rounded-pill'><i className='fas fa-caret-left'></i> Back To Companies</Link>
-                {auth.isAuthenticated && auth.loading === false && auth.company._id === profile.company._id && <DashboardActions />}
-              </div>
-            </div>
-          </Fragment>
-        }
-      </Fragment>
-    )
+    return profile === null || loading ?
+    <Spinner />
+    :
+    <Fragment>
+      <h1>Dashboard</h1>
+      <div className="pt-5">
+        <ProfileTop profile={profile} />
+        
+        <div className="pt-5 d-flex justify-content-between">
+          <Link to='/profiles' className='btn btn-outline-primary rounded-pill'><i className='fas fa-caret-left'></i> Back To Companies</Link>
+          {auth.isAuthenticated && auth.loading === false && auth.company._id === profile.company._id && <DashboardActions />}
+        </div>
+      </div>
+    </Fragment>
   }
 }
 

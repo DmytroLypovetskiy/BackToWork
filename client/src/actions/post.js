@@ -4,7 +4,8 @@ import {
   GET_POSTS,
   POST_ERROR,
   DELETE_POST,
-  ADD_POST
+  ADD_POST,
+  GET_POST
 } from './types';
 
 // Get posts
@@ -70,6 +71,28 @@ export const addPost = (formData) => async (dispatch) => {
     });
 
     dispatch(setAlert('Job created', 'success'));
+  } catch (err) {
+    const { statusText, status } = err.response;
+
+    dispatch({
+      type: POST_ERROR,
+      payload: {
+        msg: statusText,
+        status: status
+      }
+    });
+  }
+};
+
+// Get post
+export const getPost = (id) => async (dispatch) => {
+  try {
+    const { data } = await axios.get(`/api/posts/${id}`);
+
+    dispatch({
+      type: GET_POST,
+      payload: data
+    });
   } catch (err) {
     const { statusText, status } = err.response;
 

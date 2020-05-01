@@ -14,37 +14,27 @@ export default class ProfileTop extends React.Component {
 
     return (
       <Fragment>
-
-        <div className="card mb-3">
-          <div className="row no-gutters">
-            <div className="col-md-3">
-              <img src={logo} alt={name} className="rounded-circle" />
+        <div className="list-group-item">
+          <div className="row">
+            <div className="col-md-2">
+              <img src={logo} alt={name} className="rounded-circle img-fluid" />
             </div>
-            <div className="col-md-3">
-              <div className="card-body">
-                <h2 className="card-title">{name}</h2>
-                {locations.length > 0 && (
-                  <p className='text-secondary'>{locations.join(', ')}</p>
-                )}
-                {website && (
-                  <p><a href={website} title={name} target="_blank" rel='noopener noreferrer'><i className="fas fa-external-link-alt"></i> Company website</a></p>
-                )}
-              </div>
+            <div className="col-md-4">
+              <h2 className="h5">{name}</h2>
+              {locations.length > 0 && (
+                <p className='text-secondary'>{locations.join(', ')}</p>
+              )}
+              {website && (
+                <p><a href={website} title={name} target="_blank" rel='noopener noreferrer'><i className="fas fa-external-link-alt"></i> Company website</a></p>
+              )}
             </div>
             <div className="col-md-6">
-              <div className="card-body">
-                {info && (
-                  <p>{info}</p>
-                )}
-              </div>
+              {info && (
+                <p>{info}</p>
+              )}
             </div>
           </div>
         </div>
-
-
-
-        
-        
       </Fragment>
     )
   }
