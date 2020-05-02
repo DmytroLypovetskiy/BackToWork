@@ -9,7 +9,7 @@ const {
   validationResult
 } = require('express-validator');
 
-const Company = require('../../models/Company');
+const Company = require('../../models/company');
 
 // @route   POST api/companies
 // @desc    Register company
