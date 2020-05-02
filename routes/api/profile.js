@@ -8,8 +8,8 @@ const {
   validationResult
 } = require('express-validator');
 
-const Profile = require('../../models/profile');
-const Company = require('../../models/company');
+const Profile = require('../../models/Profile');
+const Company = require('../../models/Company');
 
 // @route   GET api/profile/me
 // @desc    Get current companies profile

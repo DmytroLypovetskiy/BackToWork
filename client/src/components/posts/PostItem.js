@@ -27,8 +27,6 @@ class PostItem extends React.Component {
       showActions
     } = this.props;
 
-    console.log(this.props);
-
     return (
       <li className='list-group-item'>
         <div className='row'>
