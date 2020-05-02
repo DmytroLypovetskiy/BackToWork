@@ -1,6 +1,5 @@
 node_modules/
 .vscode/
-package-lock.json
 *.code-workspace
 yarn.lock
 config/default.json
