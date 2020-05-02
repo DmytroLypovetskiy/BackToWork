@@ -52,9 +52,8 @@ class PostItem extends React.Component {
           </div>
           <div className="col-md-6">
             <p>{text}</p>
-            <p><a href={link} className='btn btn-outline-primary rounded-pill'>Apply</a></p>
             
-            {showActions && 
+            {showActions ? 
               <div className="d-flex justify-content-between">
                 <Link
                   to={`/posts/${_id}`}
@@ -82,6 +81,8 @@ class PostItem extends React.Component {
                   </Fragment>
                 )}
               </div>
+              :
+              <p><a href={link} className='btn btn-outline-primary rounded-pill'>Apply</a></p>
             }
           </div>
         </div>
