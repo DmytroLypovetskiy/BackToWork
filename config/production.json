@@ -1,0 +1,6 @@
+{
+  "mongoURI": "mongodb+srv://dmytroly:~btwbdconnect1!@backtowork-vcp6k.mongodb.net/test?retryWrites=true&w=majority",
+  "jwtSecret": "mysecrettoken",
+  "githubClientId": "cd91f1ce2590b01d5ec8",
+  "githubSecret": "1306af71dbe6e259401efc5b2beadee5cbd31198"
+}
