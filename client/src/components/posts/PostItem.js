@@ -2,7 +2,6 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
-import { Auth } from '../layout';
 import { connect } from 'react-redux';
 import { deletePost, archivePost, unarchivePost } from '../../actions/post';
 
@@ -53,7 +52,8 @@ class PostItem extends React.Component {
           </div>
           <div className="col-md-6">
             <p>{text}</p>
-
+            <p><a href={link} className='btn btn-outline-primary rounded-pill'>Apply</a></p>
+            
             {showActions && 
               <div className="d-flex justify-content-between">
                 <Link

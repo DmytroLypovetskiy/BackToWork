@@ -22,7 +22,7 @@ class Post extends React.Component {
   }
 
   render() {
-    const { post: { post, loading }, match } = this.props;
+    const { post: { post, loading } } = this.props;
 
     return post === null || loading ?
     <Spinner />
