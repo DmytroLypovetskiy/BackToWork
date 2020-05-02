@@ -1,9 +1,27 @@
 header {
-  display: flex;
-  font-family: 'Nunito', sans-serif;
+  background: rgb(110, 0, 255);
+  background: linear-gradient(
+    90deg,
+    rgba(110, 0, 255, 1) 0%,
+    rgba(81, 15, 168, 1) 80%,
+    rgba(81, 15, 168, 1) 100%
+  );
+  font-size: 0.875rem;
 
-  #logo {
-    font-weight: 900;
-    padding-top: .5rem;
+  .header {
+    display: flex;
+    font-family: 'Nunito', sans-serif;
+
+    #logo {
+      font-weight: 900;
+      padding-top: 0.5rem;
+    }
+  }
+  a {
+    color: #fff;
+
+    &:hover {
+      color: #fff;
+    }
   }
 }

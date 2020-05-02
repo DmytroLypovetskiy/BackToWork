@@ -6,12 +6,14 @@ import './header.scss';
 export default class Header extends React.Component {
   render() {
     return (
-      <header className="container justify-content-between shadow px-5 py-3 mb-5 bg-white rounded-bottom">
-        <div id="logo">
-          <Link to="/">BackToWork</Link>
+      <header className="container-fluid mb-5">
+        <div className="header container justify-content-between py-3 px-5">
+          <div id="logo">
+            <Link to="/">BackToWork</Link>
+          </div>
+          <Navbar />
+          <Auth />
         </div>
-        <Navbar />
-        <Auth />
       </header>
     )
   }

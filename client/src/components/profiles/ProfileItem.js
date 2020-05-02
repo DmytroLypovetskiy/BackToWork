@@ -11,27 +11,34 @@ export default class ProfileItem extends React.Component {
     } = this.props;
 
     return (
-      <li className='list-group-item'>
+      <div className='list-group-item'>
         <div className='row'>
-          <div div className="col-md-2">
-            <img src={logo} alt='' className='rounded-circle img-fluid' />
+          <div div className="col-md-1">
+            <Link to={`/profile/${_id}`} title={name}>
+              <img src={logo} alt={name} title={name} className='rounded-circle img-fluid' />
+            </Link>
           </div>
-          <div className="col-md-8">
-            <h3>{name}</h3>
+          <div className="col-md-4">
+            <h2 className='h5'>
+              <Link to={`/profile/${_id}`} title={name}>{name}</Link>
+            </h2>
             {locations.length > 0 && (
               <p className='text-secondary'>{locations.join(', ')}</p>
             )}
+          </div>
+          <div className="col-md-7">
             <p>
               <Link
                 to={`/profile/${_id}`}
-                className='btn btn-primary rounded-pill'
+                className='btn btn-primary rounded-pill px-3'
+                title={name}
               >
                 View Company
               </Link>
             </p>
           </div>
         </div>
-      </li>
+      </div>
     );
   }
 }

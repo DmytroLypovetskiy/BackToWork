@@ -21,15 +21,15 @@ class Posts extends React.Component {
       :
       <Fragment>
         <h1>Jobs</h1>
-        <p><i className='far fa-list-alt'></i> Available jobs</p>
+        <p>Companies are looking for:</p>
         <Alert />
         <div className='pt-5'>
           {posts && posts.length > 0 ?
-            <ul className='list-group list-group-flush'>
+            <div className='list-group list-group-flush'>
               {posts.map((post) => {
                 return <PostItem key={post._id} post={post} />;
               })}
-            </ul>
+            </div>
             :
             <p>No jobs available</p>
           }

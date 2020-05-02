@@ -33,7 +33,7 @@ class Auth extends React.Component {
       <ul className="nav" id="auth">
         {!loading && <Fragment>{ isAuthenticated ? authLink : guestLink }</Fragment>}
         <li className="nav-item">
-          <Link className="btn btn-primary rounded-pill" to="/add-post" role="button"><i className="far fa-user-circle"></i> Post Job</Link>
+          <Link className="btn btn-primary rounded-pill px-3" to="/add-post" role="button"><i className="far fa-user-circle"></i> Post Job</Link>
         </li>
       </ul>
     )

@@ -28,9 +28,11 @@ class Post extends React.Component {
     <Spinner />
     :
     <Fragment>
-      <h1>Job</h1>
+      <h1>Job information</h1>
       <div className="pt-5">
-        <PostItem post={post} showActions={false} />
+        <div className='list-group list-group-flush'>
+          <PostItem post={post} showActions={false} />
+        </div>
 
         <div className="pt-5 d-flex justify-content-between">
           <Link to='/posts' className='btn btn-outline-primary rounded-pill'><i className="fas fa-caret-left" aria-hidden="true"></i> Back to Jobs</Link>

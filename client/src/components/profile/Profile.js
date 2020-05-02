@@ -31,7 +31,7 @@ class Profile extends React.Component {
     <Spinner />
     :
     <Fragment>
-      <h1>Dashboard</h1>
+      <h1>Company information</h1>
       <div className="pt-5">
         <ProfileTop profile={profile} />
         

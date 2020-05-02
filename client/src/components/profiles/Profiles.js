@@ -12,37 +12,25 @@ class Profiles extends React.Component {
     getProfiles();
   }
 
-  /*
-  componentDidUpdate(prev) {
-    console.log(prev);
-
-    if (prev.profile.profile === null) {
-      const { getProfiles } = this.props;
-
-      getProfiles();
-    }
-  }
-  */
-
   render() {
     const {
       profile: { profiles, loading }
     } = this.props;
 
+    console.log(profiles);
+
     return loading ?
       <Spinner />
       :
       <Fragment>
-        <h1 className='text-primary'>Companies</h1>
+        <h1>Companies</h1>
         <div className='pt-5'>
-          <h2><i className='far fa-building'></i> List of an awesome companies</h2>
-
-          {profiles.length > 0 ? (
-            <ul className='list-group list-group-flush'>
+          {profiles && profiles.length > 0 ? (
+            <div className='list-group list-group-flush'>
               {profiles.map((profile) => {
                 return <ProfileItem key={profile._id} profile={profile} />;
               })}
-            </ul>
+            </div>
           ) : (
             <p>No companies found</p>
           )}

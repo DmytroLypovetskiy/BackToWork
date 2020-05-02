@@ -28,16 +28,22 @@ class PostItem extends React.Component {
     } = this.props;
 
     return (
-      <li className='list-group-item'>
+      <div className='list-group-item'>
         <div className='row'>
-          <div className="col-md-2">
-            <img src={logo} alt='' className='rounded-circle img-fluid' />
+          <div className="col-md-1">
+            <Link to={`/posts/${_id}`} title={title}>
+              <img src={logo} alt={title} title={title} className='rounded-circle img-fluid' />
+            </Link>
           </div>
           <div className="col-md-4">
-            <h2 className='h5'>{title}</h2>
-            <h4 className='h6'><Link
+            <h2 className='h5'>
+              <Link to={`/posts/${_id}`} title={title}>{title}</Link>
+            </h2>
+            <h4 className='h6'>
+              <Link
                 to={`/profile/${company}`}
                 className='text-reset'
+                title={name}
               >
                 {name}
               </Link>
@@ -48,14 +54,15 @@ class PostItem extends React.Component {
             )}
             <p className='small text-secondary'><strong>Posted:</strong> <Moment format='YYYY/MM/DD'>{date}</Moment></p>
           </div>
-          <div className="col-md-6">
+          <div className="col-md-7">
             <p>{text}</p>
             
             {showActions ? 
               <div className="d-flex justify-content-between">
                 <Link
                   to={`/posts/${_id}`}
-                  className='btn btn-primary rounded-pill'
+                  className='btn btn-primary rounded-pill px-3'
+                  title={title}
                 >
                   View Job
                 </Link>
@@ -80,11 +87,11 @@ class PostItem extends React.Component {
                 )}
               </div>
               :
-              <p><a href={link} className='btn btn-outline-primary rounded-pill'>Apply</a></p>
+              <p><a href={link} className='btn btn-primary rounded-pill px-3'>Apply</a></p>
             }
           </div>
         </div>
-      </li>
+      </div>
     );
   }
 }

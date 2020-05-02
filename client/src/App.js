@@ -11,7 +11,7 @@ import setAuthToken from './utils/setAuthToken';
 import 'bootstrap/scss/bootstrap.scss';
 import './App.scss';
 
-import { Header, Landing } from './components/layout';
+import { Header } from './components/layout';
 import { Login, Register } from './components/auth';
 import { Dashboard } from './components/dashboard';
 import { CreateProfile, EditProfile } from './components/profile-forms';

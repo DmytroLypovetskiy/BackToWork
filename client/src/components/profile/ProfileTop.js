@@ -13,10 +13,10 @@ export default class ProfileTop extends React.Component {
     } = this.props;
 
     return (
-      <Fragment>
+      <div className='list-group list-group-flush'>
         <div className="list-group-item">
           <div className="row">
-            <div className="col-md-2">
+            <div className="col-md-1">
               <img src={logo} alt={name} className="rounded-circle img-fluid" />
             </div>
             <div className="col-md-4">
@@ -25,17 +25,17 @@ export default class ProfileTop extends React.Component {
                 <p className='text-secondary'>{locations.join(', ')}</p>
               )}
               {website && (
-                <p><a href={website} title={name} target="_blank" rel='noopener noreferrer'><i className="fas fa-external-link-alt"></i> Company website</a></p>
+                <p className='small'><a href={website} title={name} target="_blank" rel='noopener noreferrer'>Company website</a></p>
               )}
             </div>
-            <div className="col-md-6">
+            <div className="col-md-7">
               {info && (
                 <p>{info}</p>
               )}
             </div>
           </div>
         </div>
-      </Fragment>
+      </div>
     )
   }
 }
