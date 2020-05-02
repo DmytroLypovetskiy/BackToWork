@@ -34,9 +34,9 @@ const App = () => {
     <Provider store={store}>
       <BrowserRouter>
         <Header />
-        <Route exact path='/' component={Landing} />
         <section className="container shadow p-5 mb-5 bg-white rounded">
           <Switch>
+            <Route exact path='/' component={Posts} />
             <Route exact path='/register' component={Register} />
             <Route exact path='/login' component={Login} />
             <Route exact path='/profiles' component={Profiles} />
