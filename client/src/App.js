@@ -8,7 +8,6 @@ import store from './store';
 import { loadCompany } from './actions/auth';
 import setAuthToken from './utils/setAuthToken';
 
-import 'bootstrap/scss/bootstrap.scss';
 import './App.scss';
 
 import { Header } from './components/layout';

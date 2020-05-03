@@ -1,4 +1,8 @@
-@import './scss/colors';
+$theme-colors: ("primary": #6e00ff);
+
+
+@import 'bootstrap/scss/bootstrap.scss';
+
 
 body {
   background-color: #f3f3f9;
@@ -12,8 +16,10 @@ label,
   font-family: 'Nunito', sans-serif;
 }
 
-h1 {
-  font-weight: 800;
+h1,
+h2 {
+  color: #6e00ff;
+  font-weight: 800 !important;
 }
 
 label {
@@ -28,6 +34,7 @@ label {
 .shadow {
   box-shadow: 0 0.75rem 1.5rem rgba(20, 40, 60, 0.03) !important;
 }
+
 .logo {
   width: 100px;
 }

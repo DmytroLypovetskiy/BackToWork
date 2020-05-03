@@ -78,13 +78,29 @@ router.post(
 );
 
 // @route   GET api/posts
-// @desc    Get all posts
+// @desc    Get all active posts 
 // @access  Public
 router.get('/', async (req, res) => {
   try {
-    const posts = await Post.find().sort({
+    const posts = await Post.find({ isActive: true }).sort({
       date: -1
     }); // newest first
+    res.json(posts);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Server Error');
+  }
+});
+
+// @route   GET api/posts
+// @desc    Get all active and anactive posts for signed company
+// @access  Public
+router.get('/logged', auth, async (req, res) => {
+  try {
+    const posts = await Post.find({ company: req.company.id }).sort({
+      date: -1
+    }); // newest first
+
     res.json(posts);
   } catch (err) {
     console.error(err);

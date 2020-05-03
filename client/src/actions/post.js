@@ -10,9 +10,14 @@ import {
 } from './types';
 
 // Get posts
-export const getPosts = () => async (dispatch) => {
+export const getPosts = (isAuthenticated) => async (dispatch) => {
   try {
-    const { data } = await axios.get('/api/posts');
+
+    const { data } = (isAuthenticated ?
+      await axios.get('/api/posts/logged')
+      :
+      await axios.get('/api/posts')
+    );
 
     dispatch({
       type: GET_POSTS,

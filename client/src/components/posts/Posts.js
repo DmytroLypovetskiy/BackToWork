@@ -8,9 +8,22 @@ import { Alert } from './../layout';
 
 class Posts extends React.Component {
   componentDidMount() {
-    const { getPosts } = this.props;
+    const { getPosts, auth: { isAuthenticated } } = this.props;
 
-    getPosts();
+    getPosts(isAuthenticated);
+  }
+  componentDidUpdate(prev) {
+    const { getPosts, auth: { isAuthenticated }, post: { posts } } = this.props;
+
+    /* TO BE Fixed
+    if (posts.length !== prev.post.posts.length) {
+      getPosts(isAuthenticated);
+    }
+    */
+
+    if (isAuthenticated !== prev.auth.isAuthenticated) {
+      getPosts(isAuthenticated);
+    }
   }
 
   render() {
@@ -41,11 +54,13 @@ class Posts extends React.Component {
 
 Posts.propTypes = {
   getPosts: PropTypes.func.isRequired,
-  post: PropTypes.object.isRequired
+  post: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  post: state.post
+  post: state.post,
+  auth: state.auth
 });
 
 export default connect(mapStateToProps, { getPosts })(Posts);
