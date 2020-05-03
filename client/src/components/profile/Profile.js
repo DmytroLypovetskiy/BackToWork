@@ -36,7 +36,7 @@ class Profile extends React.Component {
         <ProfileTop profile={profile} />
         
         <div className="pt-5 d-flex justify-content-between">
-          <Link to='/profiles' className='btn btn-outline-primary rounded-pill'><i className='fas fa-caret-left'></i> Back To Companies</Link>
+          <Link to='/profiles' className='btn btn-outline-primary rounded-pill px-3'><i className='fas fa-long-arrow-alt-left'></i> Back To Companies</Link>
           {auth.isAuthenticated && auth.loading === false && auth.company._id === profile.company._id && <DashboardActions />}
         </div>
       </div>

@@ -32,7 +32,7 @@ class PostItem extends React.Component {
         <div className='row'>
           <div className="col-md-1">
             <Link to={`/posts/${_id}`} title={title}>
-              <img src={logo} alt={title} title={title} className='rounded-circle img-fluid' />
+              <img src={logo} alt={title} title={title} className='rounded-circle img-fluid logo' />
             </Link>
           </div>
           <div className="col-md-4">

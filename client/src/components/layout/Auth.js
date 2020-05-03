@@ -25,7 +25,7 @@ class Auth extends React.Component {
 
     const guestLink = (
       <li className="nav-item">
-        <Link className="nav-link" to="/login"><i className="fas fa-sign-in-alt"></i> Login</Link>
+        <Link className="nav-link" to="/login"><i className="fas fa-sign-in-alt"></i> <span className='d-none d-lg-inline'>Login</span></Link>
       </li>
     );
 
@@ -33,7 +33,8 @@ class Auth extends React.Component {
       <ul className="nav" id="auth">
         {!loading && <Fragment>{ isAuthenticated ? authLink : guestLink }</Fragment>}
         <li className="nav-item">
-          <Link className="btn btn-primary rounded-pill px-3" to="/add-post" role="button"><i className="far fa-user-circle"></i> Post Job</Link>
+          <Link className="btn btn-light rounded-pill px-3 d-none d-lg-inline-block" to="/add-post" role="button"><i className="fas fa-plus"></i> Post Job</Link>
+          <Link className="btn btn-light rounded-pill d-lg-none" to="/add-post" role="button"><i className="fas fa-plus"></i></Link>
         </li>
       </ul>
     )

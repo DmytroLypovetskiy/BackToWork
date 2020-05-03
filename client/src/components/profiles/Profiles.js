@@ -11,6 +11,17 @@ class Profiles extends React.Component {
 
     getProfiles();
   }
+  componentDidUpdate(prev) {
+    const { profile: { profiles, loading }, getProfiles } = this.props;
+
+    console.log(loading);
+    console.log(profiles);
+    console.log(this.props);
+
+    if (prev.profile.loading !== loading) {
+      getProfiles();
+    }
+  }
 
   render() {
     const {
@@ -18,6 +29,7 @@ class Profiles extends React.Component {
     } = this.props;
 
     console.log(profiles);
+
 
     return loading ?
       <Spinner />

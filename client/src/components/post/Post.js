@@ -35,7 +35,7 @@ class Post extends React.Component {
         </div>
 
         <div className="pt-5 d-flex justify-content-between">
-          <Link to='/posts' className='btn btn-outline-primary rounded-pill'><i className="fas fa-caret-left" aria-hidden="true"></i> Back to Jobs</Link>
+          <Link to='/posts' className='btn btn-outline-primary rounded-pill px-3'><i className="fas fa-long-arrow-alt-left" aria-hidden="true"></i> Back to Jobs</Link>
         </div>
       </div>
     </Fragment>

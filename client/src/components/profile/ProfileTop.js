@@ -17,7 +17,7 @@ export default class ProfileTop extends React.Component {
         <div className="list-group-item">
           <div className="row">
             <div className="col-md-1">
-              <img src={logo} alt={name} className="rounded-circle img-fluid" />
+              <img src={logo} alt={name} className="rounded-circle img-fluid logo" />
             </div>
             <div className="col-md-4">
               <h2 className="h5">{name}</h2>

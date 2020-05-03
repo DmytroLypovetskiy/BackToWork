@@ -15,7 +15,7 @@ export default class ProfileItem extends React.Component {
         <div className='row'>
           <div div className="col-md-1">
             <Link to={`/profile/${_id}`} title={name}>
-              <img src={logo} alt={name} title={name} className='rounded-circle img-fluid' />
+              <img src={logo} alt={name} title={name} className='rounded-circle img-fluid logo' />
             </Link>
           </div>
           <div className="col-md-4">
