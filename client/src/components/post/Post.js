@@ -14,11 +14,13 @@ class Post extends React.Component {
   }
 
   componentDidUpdate(prev) {
+    /*
     if (prev.post.post === null) {
       const { getPost, match } = this.props;
 
       getPost(match.params.id);
     }
+    */
   }
 
   render() {
@@ -34,8 +36,8 @@ class Post extends React.Component {
           <PostItem post={post} showActions={false} />
         </div>
 
-        <div className="pt-5 d-flex justify-content-between">
-          <Link to='/posts' className='btn btn-outline-primary rounded-pill px-3'><i className="fas fa-long-arrow-alt-left" aria-hidden="true"></i> Back to Jobs</Link>
+        <div className="d-flex justify-content-between block-nav mb-n5 mx-n5 py-3 px-5 rounded-bottom">
+          <Link to='/posts' className='btn btn-outline-light rounded-pill px-3'><i className="fas fa-long-arrow-alt-left" aria-hidden="true"></i> Back to Jobs</Link>
         </div>
       </div>
     </Fragment>

@@ -1,8 +1,8 @@
-$theme-colors: ("primary": #6e00ff);
-
+$theme-colors: (
+  'primary': #6e00ff
+);
 
 @import 'bootstrap/scss/bootstrap.scss';
-
 
 body {
   background-color: #f3f3f9;
@@ -37,4 +37,16 @@ label {
 
 .logo {
   width: 100px;
+}
+.main-gradient {
+  background: rgb(110, 0, 255);
+  background: linear-gradient(
+    90deg,
+    rgba(110, 0, 255, 1) 0%,
+    rgba(81, 15, 168, 1) 80%,
+    rgba(81, 15, 168, 1) 100%
+  );
+}
+.block-nav {
+  @extend .main-gradient;
 }
