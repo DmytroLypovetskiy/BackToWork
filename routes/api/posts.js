@@ -97,7 +97,10 @@ router.get('/', async (req, res) => {
 // @access  Public
 router.get('/logged', auth, async (req, res) => {
   try {
-    const posts = await Post.find({ company: req.company.id }).sort({
+    const posts = await Post.find({ $or: [
+      { isActive: true },
+      { company: req.company.id }
+    ] }).sort({
       date: -1
     }); // newest first
 
