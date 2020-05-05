@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
@@ -8,9 +8,6 @@ import { deletePost, archivePost, unarchivePost } from '../../actions/post';
 class PostItemShortInfo extends React.Component {
   render() {
     const {
-      deletePost,
-      archivePost,
-      unarchivePost,
       auth,
       post: {
         _id,

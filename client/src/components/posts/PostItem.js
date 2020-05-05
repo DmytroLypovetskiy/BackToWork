@@ -56,8 +56,8 @@ class PostItem extends React.Component {
           </div>
         </div>
         <div className='row'>
-          <div className="col-md-7">
-            <div className='pt-5'>
+          <div className="col-md-12">
+            <div className='pt-3 mt-3 border-top'>
               <p>{text}</p>
               
               {showActions ? 

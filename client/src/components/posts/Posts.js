@@ -13,7 +13,7 @@ class Posts extends React.Component {
     getPosts(isAuthenticated);
   }
   componentDidUpdate(prev) {
-    const { getPosts, auth: { isAuthenticated }, post: { posts, post } } = this.props;
+    const { getPosts, auth: { isAuthenticated } } = this.props;
 
     /* TO BE Fixed
     if (posts.length !== prev.post.posts.length) {
@@ -26,12 +26,13 @@ class Posts extends React.Component {
     }
   }
 
-  render() {
-    const { post: { posts, loading, post }, getPost } = this.props;
+  getPostView(id) {
+    const { getPost } = this.props;
+    getPost(id)
+  }
 
-    console.log(this.props);
-    const firstPost = posts[0];
-    console.log(firstPost);
+  render() {
+    const { post: { posts, loading, post } } = this.props;
 
     return loading ?
       <Spinner />
@@ -44,8 +45,8 @@ class Posts extends React.Component {
           {posts && posts.length > 0 ?
             <div className='row'>
               <div className="col-md-4 list-group-flush">
-                {posts.map((post, idx) => {
-                  return <div key={post._id} onClick={ (e) => getPost(post._id) }>
+                {posts.map((post) => {
+                  return <div key={post._id} onClick={ () => this.getPostView(post._id) }>
                     <PostItemShortInfo post={post} />
                   </div>;
                 })}
