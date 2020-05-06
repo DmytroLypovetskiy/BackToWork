@@ -15,18 +15,14 @@ class PostItemShortInfo extends React.Component {
         title,
         name,
         logo,
-        text,
-        link,
         locations,
-        isActive,
         date
-      },
-      showActions
+      }
     } = this.props;
 
     return (
       <div className='list-group-item'>
-        <div className='row'>
+        <div className='row short-info'>
           <div className="col-md-3">
             <Link to={`/posts/${_id}`} title={title}>
               <img src={logo} alt={title} title={title} className='rounded-circle img-fluid logo' />
